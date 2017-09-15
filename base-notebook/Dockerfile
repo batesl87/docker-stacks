@@ -76,7 +76,13 @@ RUN cd /tmp && \
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
     'notebook=5.0.*' \
+    'ipywidgets=7.0*' \
+    'numpy=1.*' \
+    'pandas=0.19*' \
+    'plotly=1.*' \
+    'pyodbc=4.*' \
     && conda clean -tipsy && \
+    jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     fix-permissions $CONDA_DIR
 
 USER root
