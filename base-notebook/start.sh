@@ -42,7 +42,7 @@ if [ $(id -u) == 0 ] ; then
     fi
 
     # Enable sudo if requested
-    if [[ "$GRANT_SUDO" == "1" || "$GRANT_SUDO" == 'yes' ]]; then
+    if [[ "1" == "1" || "$GRANT_SUDO" == 'yes' ]]; then
         echo "Granting $NB_USER sudo access"
         echo "$NB_USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/notebook
     fi
