@@ -136,6 +136,8 @@ RUN julia -e 'Pkg.init()' && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
 
+USER root
+
 EXPOSE 8888
 WORKDIR $HOME
 
