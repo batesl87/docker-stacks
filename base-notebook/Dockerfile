@@ -98,6 +98,7 @@ RUN conda install --quiet --yes \
     jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     fix-permissions $CONDA_DIR
 
+
 USER root
 
 # Julia dependencies
@@ -135,6 +136,10 @@ RUN julia -e 'Pkg.init()' && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
+
+
+#Update tornado version
+RUN pip install git+git://github.com/tornadoweb/tornado.git@b873c804f75a4d7d052f5023b036c68a0b7e4772 --upgrade
 
 USER root
 
