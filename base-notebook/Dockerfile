@@ -88,7 +88,7 @@ RUN cd /tmp && \
 
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
-    'notebook=5.0.*' \
+    'notebook=5.1.*' \
     'ipywidgets=7.0*' \
     'numpy=1.*' \
     'pandas=0.19*' \
