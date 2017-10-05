@@ -87,9 +87,13 @@ RUN cd /tmp && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
+
+
+RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
+RUN pip install jupyter
+
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
-    'notebook=5.1.*' \
     'ipywidgets=7.0*' \
     'numpy=1.*' \
     'pandas=0.*' \
@@ -98,8 +102,6 @@ RUN conda install --quiet --yes \
     && conda clean -tipsy && \
     jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     fix-permissions $CONDA_DIR
-
-RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
 
 USER root
 
