@@ -85,6 +85,9 @@ RUN cd /tmp && \
     $CONDA_DIR/bin/conda update --all --quiet --yes && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
+    
+#Update tornado version
+RUN pip install git+git://github.com/tornadoweb/tornado.git@b873c804f75a4d7d052f5023b036c68a0b7e4772 --upgrade
 
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
@@ -136,11 +139,6 @@ RUN julia -e 'Pkg.init()' && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
-
-
-#Update tornado version
-RUN pip install git+git://github.com/tornadoweb/tornado.git@b873c804f75a4d7d052f5023b036c68a0b7e4772 --upgrade && \
-    ipython kernelspec install-self
 
 USER root
 
