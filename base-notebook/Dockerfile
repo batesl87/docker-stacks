@@ -87,7 +87,7 @@ RUN cd /tmp && \
     fix-permissions $CONDA_DIR
     
 #Update tornado version
-RUN pip install git+git://github.com/tornadoweb/tornado.git@b873c804f75a4d7d052f5023b036c68a0b7e4772 --upgrade
+RUN pip install https://github.com/tornadoweb/tornado.git@b873c804f75a4d7d052f5023b036c68a0b7e4772 --upgrade
 
 # Install Jupyter Notebook and Hub
 RUN conda install --quiet --yes \
