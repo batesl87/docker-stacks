@@ -90,6 +90,13 @@ RUN cd /tmp && \
 
 
 RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
+
+USER root
+
+RUN apt-get install -yq --no-install-recommends unixodbc-dev
+
+USER $NB_USER
+
 RUN pip install jupyter \
     ipywidgets \
     numpy \
