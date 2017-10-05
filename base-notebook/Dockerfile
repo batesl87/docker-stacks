@@ -86,13 +86,13 @@ RUN cd /tmp && \
     conda clean -tipsy && \
     fix-permissions $CONDA_DIR
 
-#USER root
+USER root
 
-#RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git
 
-#USER $NB_USER
+USER $NB_USER
 
-#RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
+RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
 RUN pip install jupyter
 
 # Install Jupyter Notebook and Hub
