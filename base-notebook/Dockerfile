@@ -97,6 +97,12 @@ RUN conda install --quiet --yes \
     && conda clean -tipsy && \
     jupyter nbextension enable --py widgetsnbextension --sys-prefix && \
     fix-permissions $CONDA_DIR
+    
+USER root
+
+RUN apt-get update && apt-get install -y git
+
+USER $NB_USER
 
 RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2 --upgrade
 
