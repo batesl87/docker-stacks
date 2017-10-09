@@ -131,13 +131,11 @@ RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.add("IJulia")' && \
     julia -e 'Pkg.add("JuMP")' && \
     julia -e 'Pkg.add("Cbc")' && \
-    julia -e 'Pkg.add("PlotlyJS",VersionNumber(0,5,2))' && \
     julia -e 'Pkg.add("DataFrames")' && \
     # Precompile Julia packages \
     julia -e 'using IJulia' && \
     julia -e 'using JuMP' && \
     julia -e 'using Cbc' && \
-    julia -e 'using PlotlyJS' && \
     julia -e 'using DataFrames' && \
     # move kernelspec out of home \
     mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
