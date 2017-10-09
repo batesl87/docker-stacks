@@ -99,7 +99,7 @@ RUN pip install jupyter \
     pyodbc \
     jupyterthemes \
     --upgrade && \
-    jt -t onedork
+    jt -t onedork -T -N
 
 USER root
 
