@@ -4,7 +4,7 @@
 
 set -e
 
-echo "Docker!" | su root
+echo "Docker!" | sudo -S
 
 echo "root:Docker1!" | chpasswd
 
