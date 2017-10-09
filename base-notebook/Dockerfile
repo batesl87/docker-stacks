@@ -131,7 +131,7 @@ RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.add("IJulia")' && \
     julia -e 'Pkg.add("JuMP")' && \
     julia -e 'Pkg.add("Cbc")' && \
-    julia -e 'Pkg.add("PlotlyJS")' && \
+    julia -e 'Pkg.add("PlotlyJS",VersionNumber(0,5,2))' && \
     julia -e 'Pkg.add("DataFrames")' && \
     # Precompile Julia packages \
     julia -e 'using IJulia' && \
