@@ -148,7 +148,7 @@ RUN julia -e 'Pkg.init()' && \
 
 USER root
 
-RUN echo "root:Docker!" | chpasswd
+#RUN echo "root:Docker!" | chpasswd
 
 EXPOSE 8888
 WORKDIR $HOME
