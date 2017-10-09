@@ -4,10 +4,6 @@
 
 set -e
 
-echo "Docker!" | sudo -S
-
-echo "root:Docker1!" | chpasswd
-
 if [[ ! -z "${JUPYTERHUB_API_TOKEN}" ]]; then
   # launched by JupyterHub, use single-user entrypoint
   exec /usr/local/bin/start-singleuser.sh $*
