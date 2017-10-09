@@ -110,6 +110,7 @@ RUN . /etc/os-release && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
     julia && \
+    unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     # Show Julia where conda libraries are \
@@ -128,8 +129,16 @@ USER $NB_USER
 RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.update()' && \
     julia -e 'Pkg.add("IJulia")' && \
+    julia -e 'Pkg.add("JuMP")' && \
+    julia -e 'Pkg.add("Cbc")' && \
+    julia -e 'Pkg.add("PlotlyJS")' && \
+    julia -e 'Pkg.add("DataFrames")' && \
     # Precompile Julia packages \
     julia -e 'using IJulia' && \
+    julia -e 'using JuMP' && \
+    julia -e 'using Cbc' && \
+    julia -e 'using PlotlyJS' && \
+    julia -e 'using DataFrames' && \
     # move kernelspec out of home \
     mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
