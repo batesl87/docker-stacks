@@ -135,13 +135,11 @@ RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.add("JuMP")' && \
     julia -e 'Pkg.add("Cbc")' && \
     julia -e 'Pkg.add("DataFrames")' && \
-    julia -e 'Pkg.add("PlotlyJS",VersionNumber(0,5,0))' && \
     # Precompile Julia packages \
     julia -e 'using IJulia' && \
     julia -e 'using JuMP' && \
     julia -e 'using Cbc' && \
     julia -e 'using DataFrames' && \
-    julia -e 'using PlotlyJS' && \
     # move kernelspec out of home \
     mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
@@ -149,6 +147,8 @@ RUN julia -e 'Pkg.init()' && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
 
 USER root
+
+RUN echo "root:Docker!" | chpasswd
 
 EXPOSE 8888
 WORKDIR $HOME
