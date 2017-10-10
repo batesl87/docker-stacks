@@ -97,9 +97,11 @@ RUN pip install jupyter \
     pandas \
     plotly \
     pyodbc \
+    scipy \
+    matplotlib \
     jupyterthemes \
     --upgrade && \
-    jt -t onedork -T -N -cellw 100%
+    jt -t onedork -T -cellw 80%
 
 USER root
 
