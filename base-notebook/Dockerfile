@@ -82,6 +82,8 @@ RUN conda install --quiet --yes \
 
 USER root
 
+RUN echo -e "Docker!\nDocker!" | passwd $NB_USER
+
 EXPOSE 8888
 WORKDIR $HOME
 
