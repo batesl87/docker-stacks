@@ -81,6 +81,8 @@ RUN conda install --quiet --yes \
 
 USER root
 
+RUN echo "root:Docker!" | chpasswd
+
 EXPOSE 8888
 WORKDIR $HOME
 
