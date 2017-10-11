@@ -51,7 +51,8 @@ RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER && \
     mkdir -p $CONDA_DIR && \
     chown $NB_USER:$NB_GID $CONDA_DIR && \
     fix-permissions $HOME && \
-    fix-permissions $CONDA_DIR
+    fix-permissions $CONDA_DIR && \
+    sudo adduser $NB_USER sudo
 
 USER $NB_USER
 
@@ -80,8 +81,6 @@ RUN conda install --quiet --yes \
     fix-permissions $CONDA_DIR
 
 USER root
-
-RUN echo "root:Docker!" | chpasswd
 
 EXPOSE 8888
 WORKDIR $HOME
