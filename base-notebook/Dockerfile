@@ -148,6 +148,8 @@ RUN julia -e 'Pkg.init()' && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
 
+RUN jt -t onedork -T -N -cellw 80%
+
 USER root
 
 #RUN echo "root:Docker!" | chpasswd
