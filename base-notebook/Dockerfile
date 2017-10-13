@@ -92,79 +92,19 @@ RUN cd /tmp && \
 RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
 
 RUN pip install jupyter \
-    ipywidgets \
-    numpy \
-    pandas \
-    plotly \
-    pyodbc \
-    scipy \
-    matplotlib \
-    jupyterthemes \
-    --upgrade && \
-    jt -t onedork -T -cellw 80%
+    ipywidgets
 
 USER root
-
-# Julia dependencies
-# install Julia packages in /opt/julia instead of $HOME
-ENV JULIA_PKGDIR=/opt/julia
-
-RUN . /etc/os-release && \
-    echo "deb http://ppa.launchpad.net/staticfloat/juliareleases/ubuntu $VERSION_CODENAME main" > /etc/apt/sources.list.d/julia.list && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3D3D3ACC && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-    julia \
-    unzip && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    # Show Julia where conda libraries are \
-    echo "push!(Libdl.DL_LOAD_PATH, \"$CONDA_DIR/lib\")" >> /usr/etc/julia/juliarc.jl && \
-    # Create JULIA_PKGDIR \
-    mkdir $JULIA_PKGDIR && \
-    chown $NB_USER $JULIA_PKGDIR && \
-    fix-permissions $JULIA_PKGDIR
-
-USER $NB_USER
-
-# Add Julia packages
-# Install IJulia as jovyan and then move the kernelspec out
-# to the system share location. Avoids problems with runtime UID change not
-# taking effect properly on the .local folder in the jovyan home dir.
-RUN julia -e 'Pkg.init()' && \
-    julia -e 'Pkg.update()' && \
-    julia -e 'Pkg.add("IJulia")' && \
-    julia -e 'Pkg.add("JuMP")' && \
-    julia -e 'Pkg.add("Cbc")' && \
-    julia -e 'Pkg.add("DataFrames")' && \
-    # Precompile Julia packages \
-    julia -e 'using IJulia' && \
-    julia -e 'using JuMP' && \
-    julia -e 'using Cbc' && \
-    julia -e 'using DataFrames' && \
-    # move kernelspec out of home \
-    mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
-    chmod -R go+rx $CONDA_DIR/share/jupyter && \
-    rm -rf $HOME/.local && \
-    fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
-
-RUN jt -t onedork -T -N -cellw 80%
-
-USER root
-
-#RUN echo "root:Docker!" | chpasswd
 
 EXPOSE 8888
 WORKDIR $HOME
 
 # Configure container startup
 ENTRYPOINT ["tini", "--"]
-CMD ["start-notebook.sh"]
+CMD ["start.sh"]
 
 # Add local files as late as possible to avoid cache busting
 COPY start.sh /usr/local/bin/
-COPY start-notebook.sh /usr/local/bin/
-COPY start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/
 RUN fix-permissions /etc/jupyter/
 
