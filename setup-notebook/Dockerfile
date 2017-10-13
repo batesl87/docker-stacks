@@ -1,5 +1,5 @@
 
-FROM 
+FROM 393680aab28a
 
 USER root
 
