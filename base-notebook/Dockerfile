@@ -20,6 +20,7 @@ RUN apt-get update && apt-get -yq dist-upgrade \
     sudo \
     locales \
     fonts-liberation \
+    git \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
