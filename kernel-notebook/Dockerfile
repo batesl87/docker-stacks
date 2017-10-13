@@ -1,5 +1,6 @@
 FROM batesl87/jupyter-notebook-config-dev:v0.3
 
+USER root
 # Julia dependencies
 # install Julia packages in /opt/julia instead of $HOME
 ENV JULIA_PKGDIR=/opt/julia
