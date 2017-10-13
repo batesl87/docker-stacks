@@ -1,4 +1,4 @@
-FROM 393680aab28a
+FROM batesl87/jupyter-notebook-setup-dev:v0.3
 
 RUN pip install jupyterthemes \
     --upgrade && \
