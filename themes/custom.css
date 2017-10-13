@@ -2744,12 +2744,12 @@ body :focus .MathJax {
  color: #b5c2d9;
  width: auto;
 }
-div#maintoolbar {
+/*div#maintoolbar {
  display: none !important;
 }
 #header-container {
  display: none !important;
-}
+}*/
 
 <script>
     MathJax.Hub.Config({
