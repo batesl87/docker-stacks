@@ -1,5 +1,5 @@
 
-FROM 393680aab28a
+FROM batesl87/jupyter-notebook-base-dev:v0.3
 
 USER root
 
