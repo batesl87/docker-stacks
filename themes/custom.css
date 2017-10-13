@@ -2744,6 +2744,13 @@ body :focus .MathJax {
  color: #b5c2d9;
  width: auto;
 }
+
+div#maintoolbar {margin-left: 8px !important;}
+.toolbar.container {width: 100% !important;}
+span.save_widget span.filename {margin-left: 8px;font-size: 120%; color: @nb-name-fg; background-color:@cc-input-bg;}
+span.save_widget span.filename:hover {color:@nb-name-hover; background-color: @cc-input-bg;}
+#menubar {padding-top: 4px; background-color:@notebook-bg;}
+
 /*div#maintoolbar {
  display: none !important;
 }
