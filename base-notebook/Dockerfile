@@ -84,7 +84,7 @@ USER root
 
 RUN apt-get update && apt-get -yq dist-upgrade \
  && apt-get install -yq --no-install-recommends \
-    spawn \
+    expect \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
