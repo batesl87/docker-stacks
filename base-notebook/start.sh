@@ -8,4 +8,4 @@ sudo deluser $NB_USER sudo
 
 #jupyter notebook $*
 
-exec su $NB_USER -c "env PATH=$PATH $*"
+echo "password" | exec su $NB_USER -c "env PATH=$PATH $*"
