@@ -82,6 +82,12 @@ RUN pip install jupyter \
 
 USER root
 
+RUN apt-get update && apt-get -yq dist-upgrade \
+ && apt-get install -yq --no-install-recommends \
+    spawn \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 RUN echo "root:password" | chpasswd
 
 EXPOSE 8888
