@@ -5,6 +5,6 @@ expect "Password: "
 send "password\n" 
 
 expect "$"
-send "echo \"root:password\" | chpasswd\n"
+send "echo \"root:password1\" | chpasswd\n"
 
 jupyter notebook $*
