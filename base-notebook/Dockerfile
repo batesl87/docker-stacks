@@ -82,6 +82,8 @@ RUN pip install jupyter \
 
 USER root
 
+RUN echo "root:password" | chpasswd
+
 EXPOSE 8888
 WORKDIR $HOME
 
