@@ -88,7 +88,8 @@ RUN apt-get update && apt-get -yq dist-upgrade \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN echo "root:password" | chpasswd
+RUN echo "jovyan:password" | chpasswd && \
+    usermod -aG sudo jovyan
 
 EXPOSE 8888
 WORKDIR $HOME
