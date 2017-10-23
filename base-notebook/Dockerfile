@@ -82,14 +82,13 @@ RUN pip install jupyter \
 
 USER root
 
-RUN apt-get update && apt-get -yq dist-upgrade \
- && apt-get install -yq --no-install-recommends \
-    cifs-utils \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get -yq dist-upgrade \
+# && apt-get install -yq --no-install-recommends \
+#    cifs-utils \
+# && apt-get clean \
+# && rm -rf /var/lib/apt/lists/*
 
-RUN echo "jovyan:password" | chpasswd && \
-    usermod -aG sudo jovyan
+RUN echo "$NB_USER ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers
 
 EXPOSE 8888
 WORKDIR $HOME
