@@ -109,7 +109,8 @@ RUN . /etc/os-release && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 3D3D3ACC && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
-    julia && \
+    julia \
+    unzip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     # Show Julia where conda libraries are \
@@ -128,8 +129,16 @@ USER $NB_USER
 RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.update()' && \
     julia -e 'Pkg.add("IJulia")' && \
+    julia -e 'Pkg.add("Cbc")' && \
+    julia -e 'Pkg.add("JuMP")' && \
+    julia -e 'Pkg.add("DataFrames")' && \
+    julia -e 'Pkg.add("Plotly")' && \
     # Precompile Julia packages \
     julia -e 'using IJulia' && \
+    julia -e 'using Cbc' && \
+    julia -e 'using JuMP' && \
+    julia -e 'using DataFrames' && \
+    julia -e 'using Plotly' && \
     # move kernelspec out of home \
     mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
