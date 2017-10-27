@@ -143,8 +143,8 @@ RUN julia -e 'Pkg.init()' && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
     
-RUN julia -e 'Pkg.add("Plotly")' && \
-    julia -e 'using Plotly'
+RUN julia -e 'Pkg.add("PlotlyJS")' && \
+    julia -e 'using PlotlyJS'
 
 USER root
 
