@@ -132,18 +132,19 @@ RUN julia -e 'Pkg.init()' && \
     julia -e 'Pkg.add("Cbc")' && \
     julia -e 'Pkg.add("JuMP")' && \
     julia -e 'Pkg.add("DataFrames")' && \
-    julia -e 'Pkg.add("Plotly")' && \
     # Precompile Julia packages \
     julia -e 'using IJulia' && \
     julia -e 'using Cbc' && \
     julia -e 'using JuMP' && \
     julia -e 'using DataFrames' && \
-    julia -e 'using Plotly' && \
     # move kernelspec out of home \
     mv $HOME/.local/share/jupyter/kernels/julia* $CONDA_DIR/share/jupyter/kernels/ && \
     chmod -R go+rx $CONDA_DIR/share/jupyter && \
     rm -rf $HOME/.local && \
     fix-permissions $JULIA_PKGDIR $CONDA_DIR/share/jupyter
+    
+RUN julia -e 'Pkg.add("Plotly")' && \
+    julia -e 'using Plotly'
 
 USER root
 
