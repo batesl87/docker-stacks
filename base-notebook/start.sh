@@ -1,6 +1,6 @@
 set -e
 
-export JUPYTER_TOKEN="$0"
+export JUPYTER_TOKEN="$1"
 
 shift
 
