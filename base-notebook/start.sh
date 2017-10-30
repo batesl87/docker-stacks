@@ -2,4 +2,6 @@ set -e
 
 export JUPYTER_TOKEN="$0"
 
-jupyter notebook "${@:2}"
+shift
+
+jupyter notebook $*
