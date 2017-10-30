@@ -1,3 +1,5 @@
 set -e
 
-jupyter notebook $*
+export JUPYTER_TOKEN=$0
+
+jupyter notebook ${@:1}
