@@ -18,7 +18,9 @@ RUN julia -e 'Pkg.update()' && \
     julia -e 'Pkg.add("JuMP")' && \
     julia -e 'Pkg.add("Cbc")' && \
     julia -e 'Pkg.add("DataFrames")' && \
+    julia -e 'Pkg.add("Plotly")' && \
     # Precompile Julia packages \
     julia -e 'using JuMP' && \
     julia -e 'using Cbc' && \
     julia -e 'using DataFrames'
+    julia -e 'using Plotly'
