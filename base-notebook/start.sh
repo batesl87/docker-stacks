@@ -1,6 +1,6 @@
 set -e
 
-export NV_ENV="$1"
+export NV_DOMAIN="$1"
 
 shift
 
