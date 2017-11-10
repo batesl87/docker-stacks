@@ -1,10 +1,8 @@
 FROM batesl87/jupyter-notebook-kernel-dev:v0.3
 
-USER root
-
 USER $NB_USER
-#Python
 
+#Python
 RUN pip install numpy \
     pandas \
     plotly \
@@ -22,5 +20,5 @@ RUN julia -e 'Pkg.update()' && \
     # Precompile Julia packages \
     julia -e 'using JuMP' && \
     julia -e 'using Cbc' && \
-    julia -e 'using DataFrames'
+    julia -e 'using DataFrames' && \
     julia -e 'using Plotly'
