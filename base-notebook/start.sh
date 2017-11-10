@@ -3,7 +3,6 @@ set -e
 export NV_DOMAIN="$1"
 export JUPYTER_TOKEN="$2"
 
-shift
-shift
+shift 2
 
 jupyter notebook $*
