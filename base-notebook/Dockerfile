@@ -75,7 +75,7 @@ RUN cd /tmp && \
     fix-permissions $CONDA_DIR
 
 
-RUN pip install git+git://github.com/batesl87/tornado.git@notebooks-iter2
+RUN pip install git+git://github.com/SnowdenNeuroverse/tornado.git@notebooks-iter2
 
 RUN pip install jupyter \
     ipywidgets
