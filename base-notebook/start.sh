@@ -7,6 +7,7 @@ shift 2
 
 mkdir -p /home/$NB_USER/.jupyter/custom/
 
+
 wget  -O /home/$NB_USER/.jupyter/custom/ "https://github.com/SnowdenNeuroverse/docker-stacks/tree/master/themes/$(echo $NV_DOMAIN | cut -f3 -d/)/custom.css"
 wget  -O /home/$NB_USER/.jupyter/custom/ "https://github.com/SnowdenNeuroverse/docker-stacks/tree/master/themes/$(echo $NV_DOMAIN | cut -f3 -d/)/logo.png"
 
