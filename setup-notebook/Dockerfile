@@ -1,5 +1,5 @@
 
-FROM batesl87/jupyter-notebook-base-dev:v0.3
+FROM SnowdenNeuroverse/jupyter-notebook-base-dev:v0.3
 
 USER root
 
