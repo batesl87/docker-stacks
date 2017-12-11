@@ -9,8 +9,8 @@ echo 'create dir'
 mkdir -p /home/$NB_USER/.jupyter/custom/
 
 echo 'download css'
-wget  -O /home/$NB_USER/.jupyter/custom/custom.css "https://github.com/SnowdenNeuroverse/docker-stacks/tree/master/themes/$(echo $NV_DOMAIN | cut -f3 -d/)/custom.css"
+wget  -O /home/$NB_USER/.jupyter/custom/custom.css "https://raw.githubusercontent.com/SnowdenNeuroverse/docker-stacks/master/themes/$(echo $NV_DOMAIN | cut -f3 -d/)/custom.css"
 echo 'download logo'
-wget  -O /home/$NB_USER/.jupyter/custom/logo.png "https://github.com/SnowdenNeuroverse/docker-stacks/tree/master/themes/$(echo $NV_DOMAIN | cut -f3 -d/)/logo.png"
+wget  -O /home/$NB_USER/.jupyter/custom/logo.png "https://raw.githubusercontent.com/SnowdenNeuroverse/docker-stacks/master/themes/$(echo $NV_DOMAIN | cut -f3 -d/)/logo.png"
 
 jupyter notebook $*
