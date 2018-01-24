@@ -22,4 +22,10 @@ RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt
 # install SQL Server drivers
 RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql
 
+RUN apt-get update && apt-get -yq dist-upgrade \
+ && apt-get install -yq --no-install-recommends \
+    build-essential \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 USER $NB_USER
