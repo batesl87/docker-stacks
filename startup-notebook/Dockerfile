@@ -1,3 +1,5 @@
+FROM batesl87/jupyter-notebook-packages-dev:v0.3
+
 USER root
 
 #Rename start.sh and create a new one
