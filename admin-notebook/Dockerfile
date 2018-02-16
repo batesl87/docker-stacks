@@ -1,4 +1,4 @@
-FROM batesl87/jupyter-notebook-packages-dev:v0.3
+FROM batesl87/jupyter-notebook-startup-dev:v0.3
 
 USER root
 
