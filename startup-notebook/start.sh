@@ -2,4 +2,6 @@
 # julia -e 'Pkg.clone("https://github.com/SnowdenNeuroverse/NeuroJulia.git")'
 # julia -e 'using NeuroJulia'
 
+set -e
+
 . /usr/local/bin/start-jupyter.sh $*
