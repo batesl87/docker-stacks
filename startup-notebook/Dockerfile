@@ -11,6 +11,5 @@ RUN chmod +x /usr/local/bin/start.sh
 USER $NB_USER
 
 RUN pip install git+https://github.com/SnowdenNeuroverse/NeuroPython.git@master --upgrade
-RUN julia -e 'Pkg.add("DataStreams")'
 RUN julia -e 'Pkg.clone("https://github.com/SnowdenNeuroverse/NeuroJulia.git")' && \
 julia -e 'using NeuroJulia'
