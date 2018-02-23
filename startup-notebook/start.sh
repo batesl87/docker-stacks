@@ -3,11 +3,9 @@ set -e
 export NV_DOMAIN="$1"
 export JUPYTER_TOKEN="$2"
 
-#pip install git+https://github.com/SnowdenNeuroverse/NeuroPython.git@master --upgrade
-#julia -e 'Pkg.clone("/home/jovyan/NeuroJulia")'
+pip install git+https://github.com/SnowdenNeuroverse/NeuroPython.git@master --upgrade
 git clone git://github.com/SnowdenNeuroverse/NeuroJulia.git $JULIA_PKGDIR/v0.5/NeuroJulia
 julia -e 'using NeuroJulia'
-#julia -e 'Pkg.clone("git://github.com/SnowdenNeuroverse/NeuroJulia.git")'
 
 shift 2
 
