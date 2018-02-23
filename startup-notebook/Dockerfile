@@ -8,7 +8,8 @@ COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start-jupyter.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-USER $NB_USER
+#USER $NB_USER
 
-RUN pip install git+https://github.com/SnowdenNeuroverse/NeuroPython.git@master --upgrade
-#RUN julia -e 'Pkg.clone("git://github.com/SnowdenNeuroverse/NeuroJulia.git")'
+#RUN pip install git+https://github.com/SnowdenNeuroverse/NeuroPython.git@master --upgrade
+RUN julia -e 'Pkg.clone("git://github.com/SnowdenNeuroverse/NeuroJulia.git")'
+USER $NB_USER
