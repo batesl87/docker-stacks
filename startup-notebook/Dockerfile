@@ -8,8 +8,9 @@ COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start-jupyter.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-#USER $NB_USER
-
-#RUN pip install git+https://github.com/SnowdenNeuroverse/NeuroPython.git@master --upgrade
-#RUN sudo julia -e 'Pkg.clone("git://github.com/SnowdenNeuroverse/NeuroJulia.git")'
 USER $NB_USER
+
+
+RUN pip install jupyterthemes \
+    --upgrade && \
+    jt -t onedork -T -N -cellw 80%
