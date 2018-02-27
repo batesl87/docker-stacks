@@ -1,4 +1,4 @@
-FROM batesl87/jupyter-notebook-config-dev:v0.3
+FROM batesl87/jupyter-notebook-setup-dev:v0.3
 
 USER root
 # Julia dependencies
